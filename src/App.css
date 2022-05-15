@@ -1,38 +1,257 @@
-.App {
-  text-align: center;
+body {
+  background-image: url("./img/3048692.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+* {
+  cursor: url(https://cdn.custom-cursor.com/db/cursor/32/rick_and_morty_portal_gun_cursor.png),
+    default !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  src: url(./fonts/AgrozzaDemoRegular.ttf);
+  font-family: agrozza;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  src: url(./fonts/vikingsquad.ttf);
+  font-family: get;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.titulo {
+  color: hsl(180, 150%, 50%);
+  display: flex;
+  justify-content: center;
+  text-shadow: 0px 0px 5px black, 0px 0px 15px hsl(174, 72%, 35%),
+    0px 0px 15px hsl(174, 72%, 35%), 0px 0px 15px hsl(174, 72%, 35%),
+    0px 0px 15px hsl(174, 72%, 35%);
+  width: 17ch;
+  font-family: agrozza;
+}
+
+.titulo:hover {
+  text-shadow: 0px 0px 5px black, 0px 0px 10px black,
+    0px 0px 25px hsl(180, 150%, 50%), 0px 0px 25px hsl(180, 150%, 50%),
+    0px 0px 25px hsl(180, 150%, 50%), 0px 0px 25px hsl(180, 150%, 50%);
+}
+
+.tarjeta {
+  background-color: hsla(212, 100%, 50%, 0.6);
+  color: hsl(180, 150%, 50%);
+  font-family: agrozza;
+  border-radius: 0%;
+  transition-duration: 0.6s;
+}
+.tarjeta:hover{
+  transform: scale(1.03);
+}
+.tarjeta::before {
+  background-color: hsla(212, 100%, 50%, 0.6);
+  height: 15px;
+  width: 30%;
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 0.7%;
+  border: 1px solid hsl(190, 90%, 50%);
+  border-bottom-color: transparent;
+  transform: skewX(-25deg);
+  transition-duration: 0.6s;
+  outline: 5px solid hsla(212, 100%, 50%, 0.45);
+  outline-offset: -6px;
+}
+.tarjeta:hover::before {
+  transform: translateX(291px) skewX(-25deg);
+}
+.tarjeta::after {
+  background-color: hsla(212, 100%, 50%, 0.6);
+  height: 15px;
+  width: 30%;
+  content: "";
+  position: absolute;
+  top: 100%;
+  right: 0.4%;
+  border: 1px solid hsl(190, 90%, 50%);
+  border-top-color: transparent;
+  transform: skewX(-25deg);
+  transition-duration: 0.6s;
+  outline: 4px solid hsla(212, 100%, 50%);
+  outline-offset: -5px;
+}
+.tarjeta:hover::after {
+  transform: translateX(-292px) skewX(-25deg);
+}
+
+.file {
+  background-color: hsla(212, 100%, 50%, 0);
+  color: hsl(180, 150%, 50%);
+  text-shadow: 0px 0px 5px black;
+}
+
+.foto {
+  /* width: 55%; */
+  border-radius: 3%;
+}
+
+.selector {
+  width: 100%;
+}
+.elector {
+  background-color: hsla(212, 65%, 40%);
+  color: hsl(180, 150%, 50%);
+  text-shadow: 0px 0px 5px 5px black;
+  font-family: agrozza;
+  border: 2px solid black;
+}
+.footer {
+  width: 100%;
+  height: 18vh;
+  background-color: hsla(212, 65%, 35%);
+  font: normal normal normal 160% / normal get;
+  color: hsl(82, 93%, 60%);
+}
+
+.page-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+}
+.content-wrap {
+  flex: 1;
+}
+.options {
+  font-family: agrozza;
 }
 
-.App-link {
-  color: #61dafb;
+.boton {
+  font-family: agrozza;
+  background-color: hsl(180, 150%, 50%);
+  color: black;
+  border: 2px solid black;
+}
+.boton:hover {
+  box-shadow: 0px 0px 5px black, 0px 0px 25px hsl(180, 150%, 50%),
+    0px 0px 25px hsl(180, 150%, 50%), 0px 0px 25px hsl(180, 150%, 50%),
+    0px 0px 25px hsl(180, 150%, 50%);
+}
+.numbers {
+  background-color: hsla(212, 65%, 35%);
+  color: hsl(180, 150%, 50%);
+  border: 2px solid black !important;
+  margin: 0px 3px;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+.numbers:hover {
+  background-color: hsl(180, 150%, 50%);
+  color: hsla(212, 65%, 35%);
+}
+.numbers:focus {
+  background-color: hsla(212, 65%, 35%) !important;
+  color: hsl(180, 150%, 50%) !important;
+}
+.active {
+  background: hsl(105, 100%, 48%)!important;
+  color: black !important;
+}
+.active:focus {
+  background: radial-gradient(
+    #c1f762,
+    #c7fa6c,
+    hsl(105, 35%, 50%),
+    hsl(108, 65%, 58%),
+    #365829
+  ) !important;
+  color: black !important;
+}
+.pag {
+  font: normal normal normal 215% / normal get;
+}
+.get {
+  font: normal normal normal 160% / normal get;
+}
+::-webkit-scrollbar {
+  width: 15px;
+  background-color: hsla(212, 65%, 35%);
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: hsla(212, 65%, 35%);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: white;
+  background: radial-gradient(
+    #c1f762,
+    #c7fa6c,
+    hsl(105, 35%, 50%),
+    hsl(108, 65%, 58%),
+    #365829
+  );
+}
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: 0px 0px 25px hsl(108, 65%, 58%), 0px 0px 25px hsl(108, 65%, 58%),
+    0px 0px 25px hsl(108, 65%, 58%), 0px 0px 25px hsl(108, 65%, 58%);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.turn:hover {
+  -webkit-animation: flip-vertical-right 0.7s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  animation: flip-vertical-right 0.7s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+}
+@-webkit-keyframes flip-vertical-right {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
   }
+}
+@keyframes flip-vertical-right {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+.turn {
+  -webkit-animation: flipy 0.7s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    alternate both;
+  animation: flipy 0.7s cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate both;
+}
+@-webkit-keyframes flipy {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+@keyframes flipy {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+.what:hover {
+  color: #25d366;
+}
+.git:hover {
+  color: #f1502f;
+}
+.linked:hover {
+  color: yellow;
 }
